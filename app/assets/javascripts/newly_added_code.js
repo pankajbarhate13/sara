@@ -1,1 +1,2 @@
-$('.pub-header').css('backgroundColor','#D46A6A')
+$('.pub-header').css('color','#D46A6A')
+
