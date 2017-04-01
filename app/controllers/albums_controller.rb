@@ -14,10 +14,12 @@ class AlbumsController < ApplicationController
 
   def new
     @album = Album.new
+    @publishers = Publisher.all.pluck(:id,:name,:phone)
     respond_with(@album)
   end
 
   def edit
+    @publishers = Publisher.all.pluck(:id,:name,:phone)
   end
 
   def create
