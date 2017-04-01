@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :artists
   resources :songs
-  resources :albums
+  resources :albums do
+    collection do
+     get 'recent_album'
+    end
+  end
   resources :publishers
   
   root 'publishers#index'

@@ -35,6 +35,11 @@ class AlbumsController < ApplicationController
     @album.destroy
     respond_with(@album)
   end
+  
+  def recent_album
+    @recent_albums = Album.all.order('updated_at desc').limit(5)
+    respond_with(@album)
+  end
 
   private
     def set_album
