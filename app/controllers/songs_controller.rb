@@ -33,7 +33,7 @@ class SongsController < ApplicationController
 
   def destroy
     @song.destroy
-    respond_with(@song)
+   render :json => {:status => true}
   end
 
   private

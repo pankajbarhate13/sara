@@ -10,10 +10,24 @@ table.table.table-striped
       th name
       th album
       th artist
+      th Action
   tbody
     - @songs.each do |song|
       tr
         td= link_to song.name, song
         td= song.album.name
         td= song.artist.name
+        td= link_to 'Delete', "javascript:void(0)",:id => song.id,:class => 'song_delete'
 
+javascript:
+  $('.song_delete').on('click',function(){
+    var song_id = $(this).attr('id')
+    var song_row = $(this)
+    $.ajax({
+      type: 'DELETE',
+      url: '/songs/'+song_id,
+      success: function(){
+      song_row.parent().parent().remove();
+      }
+    })
+  })
