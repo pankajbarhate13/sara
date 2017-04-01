@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
   respond_to :html
 
   def index
-    @albums = Album.all
+    @albums = Album.all.includes(:publisher)
     respond_with(@albums)
   end
 
@@ -37,7 +37,7 @@ class AlbumsController < ApplicationController
   end
   
   def recent_album
-    @recent_albums = Album.all.order('updated_at desc').limit(5)
+    @recent_albums = Album.all.order('updated_at desc').limit(5).include(:publishers)
     respond_with(@album)
   end
 
