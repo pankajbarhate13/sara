@@ -37,7 +37,7 @@ class AlbumsController < ApplicationController
   end
   
   def recent_album
-    @recent_albums = Album.all.order('updated_at desc').limit(5).include(:publishers)
+    @recent_albums = Album.all.order('released_on desc').limit(5).include(:publishers)
     respond_with(@album)
   end
 
